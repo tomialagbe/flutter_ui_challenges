@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ui_challenges/profile/profile_home_page.dart';
 import 'todo/todo_home_page.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,7 +7,7 @@ class HomePage extends StatelessWidget {
   final List<MapEntry<String, Widget>> pages = <
       MapEntry<String, Widget>>[
     new MapEntry("Todo Concept", new TodoHomePage()),
-    new MapEntry("Social UI", null),
+    new MapEntry("Social UI", new ProfileHomePage()),
   ];
 
   BuildContext scaffoldContext;

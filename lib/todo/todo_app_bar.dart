@@ -7,7 +7,10 @@ class TodoAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final topPadding = MediaQuery.of(context).padding.top;
+    final topPadding = MediaQuery
+        .of(context)
+        .padding
+        .top;
     return new Container(
       height: height,
       padding: new EdgeInsets.only(top: topPadding, left: 10.0, right: 10.0),

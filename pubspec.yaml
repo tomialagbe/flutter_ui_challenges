@@ -29,11 +29,25 @@ flutter:
 
   assets:
     - assets/todo/images/avatar.jpeg
+    - assets/profile/images/1.jpg
+    - assets/profile/images/2.jpg
+    - assets/profile/images/3.jpg
+    - assets/profile/images/4.jpg
+    - assets/profile/images/5.jpg
 
   fonts:
+    - family: afta-sans-italic
+      fonts:
+        - asset: assets/profile/fonts/aftasansthin-italic-webfont.ttf
     - family: fontello
       fonts:
         - asset: assets/todo/fonts/fontello.ttf
+    - family: peicon
+      fonts:
+        - asset: assets/profile/fonts/Pe-icon-7-stroke.ttf
+    - family: themify
+      fonts:
+        - asset: assets/profile/fonts/themify.ttf
   # To add assets to your application, add an assets section, like this:
   # assets:
   #  - images/a_dot_burr.jpeg
