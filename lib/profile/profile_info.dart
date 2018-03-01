@@ -231,9 +231,17 @@ class _ProfileInfoState extends State<ProfileInfo>
             topLeft: new Radius.circular(30.0),
             topRight: new Radius.circular(30.0),
           ),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
-        child: new Row(
+        ),        
+        // padding: new EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
+        padding: new EdgeInsets.only(
+          top: 30.0,
+          // bottom: 30.0,
+          bottom: slideOutAnimation.value > 0.1 ? slideOutAnimation.value + 10.0 : slideInAnimation.value + 10.0,
+          left: 20.0,
+          right: 20.0),
+        child: new Opacity(
+          opacity: fadeOutAnimation.value > 0.1 ? fadeOutAnimation.value : fadeInAnimation.value,
+          child: new Row(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
@@ -265,6 +273,7 @@ class _ProfileInfoState extends State<ProfileInfo>
               ),
             ),
           ],
+        ),
         ),
       ),
     );
