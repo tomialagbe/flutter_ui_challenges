@@ -1,4 +1,4 @@
-# Flutter UI Challenges <img src="https://flutter.io/images/flutter-mark-square-100.png" alt="Flutter" width="30" height="30" />
+# FLUTTER UI CHALLENGE <img src="https://flutter.io/images/flutter-mark-square-100.png" alt="Flutter" width="30" height="30" />
 
 UI Challenges with Flutter
 
@@ -7,6 +7,7 @@ UI Challenges with Flutter
 
 ### [Profile App](https://github.com/tomialagbe/flutter_ui_challenges/tree/master/profile)
 Design made by **Shahin Srowar**
+
 [<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/profile.png" width="600" height="450">](https://dribbble.com/shots/4249249-Profile-App-Screen-Exploration)
 
 # Intermediate
