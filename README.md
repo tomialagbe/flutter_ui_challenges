@@ -1,6 +1,13 @@
 # FLUTTER UI CHALLENGE <img src="https://flutter.io/images/flutter-mark-square-100.png" alt="Flutter" width="30" height="30" />
 
-UI Challenges with Flutter with levels: [Beginner](#beginner), [Intermediate](#intermediate), [Advanced](#advanced).
+Put your Flutter experience to test with these UI Challenges. 
+
+:warning: **Contributions must be made in this repository.**:warning:
+
+**Levels:**
+- [Beginner](#beginner)
+- [Intermediate](#intermediate)
+- [Advanced](#advanced)
 
 
 
