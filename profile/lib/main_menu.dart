@@ -48,7 +48,7 @@ class MainMenu extends StatelessWidget {
             new Text(title, style: textStyle),
             new Expanded(child: new Container()),
             new IconButton(
-                icon: new Icon(Icons.chevron_right, color: Colors.black54),
+                icon: new Icon(Icons.chevron_right, color: Colors.black26),
                 onPressed: action)
           ],
         ),
