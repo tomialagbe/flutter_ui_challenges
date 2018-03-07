@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:profile/main_menu.dart';
 import 'package:profile/models.dart';
 import 'package:profile/profile_colors.dart';
 import 'package:profile/profile_icons.dart';
@@ -46,6 +47,7 @@ class ProfileHomePage extends StatelessWidget {
         children: <Widget>[
           new ProfileHeader(profile),
           new QuickActions(),
+          new MainMenu(),
         ],
       ),
       bottomNavigationBar: new BottomNavigationBar(

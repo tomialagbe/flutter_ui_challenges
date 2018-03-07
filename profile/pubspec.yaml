@@ -32,7 +32,7 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
-    - assets/images/profile.png
+    - assets/images/emma-watson.jpg
     - assets/images/microphone.png
     - assets/images/wallet.png
     - assets/images/joystick.png
