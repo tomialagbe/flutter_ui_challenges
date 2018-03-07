@@ -8,8 +8,6 @@ class QuickActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
     final blueGradient = const LinearGradient(
         colors: const <Color>[
           const Color(0xFF0075D1),
@@ -37,7 +35,7 @@ class QuickActions extends StatelessWidget {
 
     return new Container(
       constraints: const BoxConstraints(maxHeight: 120.0),
-      margin: const EdgeInsets.only(bottom: 20.0, top: 20.0),
+      margin: const EdgeInsets.only(top: 20.0),
       child: new Align(
         alignment: Alignment.center,
         child: new ListView(
@@ -47,13 +45,13 @@ class QuickActions extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             children: <Widget>[
               _buildAction(
-                  "Live Broadcast".split(" "), () {}, Colors.blue, blueGradient,
+                  "Live\nBroadcast", () {}, Colors.blue, blueGradient,
                   new AssetImage("assets/images/microphone.png")),
               _buildAction(
-                  "My Wallet".split(" "), () {}, Colors.purple, purpleGraient,
+                  "My\nWallet", () {}, Colors.purple, purpleGraient,
                   new AssetImage("assets/images/wallet.png")),
               _buildAction(
-                  "Game Center".split(" "), () {}, Colors.red, redGradient,
+                  "Game\nCenter", () {}, Colors.red, redGradient,
                   new AssetImage("assets/images/joystick.png")),
             ]
         ),
@@ -61,7 +59,7 @@ class QuickActions extends StatelessWidget {
     );
   }
 
-  Widget _buildAction(List<String> titleWords, VoidCallback action, Color color,
+  Widget _buildAction(String title, VoidCallback action, Color color,
       Gradient gradient, ImageProvider backgroundImage) {
     final textStyle = new TextStyle(
         color: Colors.white,
@@ -116,13 +114,7 @@ class QuickActions extends StatelessWidget {
             new Container(
               alignment: Alignment.topLeft,
               padding: const EdgeInsets.only(left: 10.0, top: 10.0),
-              child: new Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  new Text(titleWords[0], style: textStyle),
-                  new Text(titleWords[1], style: textStyle),
-                ],
-              ),
+              child: new Text(title, style: textStyle),
             ),
           ],
         ),
