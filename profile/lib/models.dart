@@ -1,11 +1,18 @@
 class Profile {
   String firstName;
   String lastName;
+  String location;
   int numberOfFollowers;
   int numberFollowing;
   int totalLikes;
 
   String get fullName => "$firstName $lastName";
+
+  String get numberOfFollowersString => _abbreviatedCount(numberOfFollowers);
+
+  String get numberFollowingString => _abbreviatedCount(numberFollowing);
+
+  String get totalLikesString => _abbreviatedCount(totalLikes);
 
   String _abbreviatedCount(int num) {
     if (num < 1000) return "$num";
@@ -32,6 +39,7 @@ Profile getProfile() {
   return new Profile()
     ..firstName = "Emma"
     ..lastName = "Watson"
+    ..location = "New York"
     ..numberOfFollowers = 5700000
     ..numberFollowing = 924
     ..totalLikes = 1700;
