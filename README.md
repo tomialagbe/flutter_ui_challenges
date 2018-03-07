@@ -12,7 +12,7 @@ Put your Flutter experience to test with these UI Challenges.
 
 
 
-# Beginner
+# ~~Beginner~~ (Complete)
 
 ### [Profile App](https://github.com/tomialagbe/flutter_ui_challenges/tree/master/profile)
 Design made by **Shahin Srowar**
