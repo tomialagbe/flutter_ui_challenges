@@ -30,38 +30,3 @@ class StackedCircles extends StatelessWidget {
     );
   }
 }
-
-//class Circle extends StatelessWidget {
-//
-//  final Color color;
-//  final double diameter;
-//
-//  Circle(this.color, this.diameter);
-//
-//  @override
-//  Widget build(BuildContext context) {
-//    return new CustomPaint(
-//      size: new Size(diameter, diameter),
-//      painter: new CirclePainter(color),
-//    );
-//  }
-//
-//}
-//
-//class CirclePainter extends CustomPainter {
-//
-//  final Color color;
-//
-//  CirclePainter(this.color);
-//
-//  @override
-//  void paint(Canvas canvas, Size size) {
-//    canvas.drawCircle(
-//        new Offset(size.width / 2, size.height / 2), size.width / 2,
-//        new Paint()..color = this.color);
-//  }
-//
-//  @override
-//  bool shouldRepaint(CustomPainter oldDelegate) => true;
-//
-//}
