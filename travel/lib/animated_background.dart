@@ -72,19 +72,19 @@ class _AnimatedBackgroundImageClipper extends CustomClipper<Path> {
 
     ctrl = new Offset(-0.35 * size.width, size.height);
     end = new Offset(0.6 * size.width, size.height * 0.95);
-    path.quadraticBezierTo(ctrl.dx, ctrl.dy, end.dx, end.dy);
+    path.quadraticBezierTo(ctrl.diameter, ctrl.dy, end.diameter, end.dy);
 
     path.lineTo(0.6 * size.width, size.height * 0.95);
 
     ctrl = new Offset(0.7 * size.width, size.height - 20);
     end = new Offset(0.8 * size.width, size.height * 0.9);
-    path.quadraticBezierTo(ctrl.dx, ctrl.dy, end.dx, end.dy);
+    path.quadraticBezierTo(ctrl.diameter, ctrl.dy, end.diameter, end.dy);
 
     path.lineTo(0.8 * size.width, size.height * 0.9);
 
     ctrl = new Offset(0.9 * size.width, size.height * 0.9 - 15);
     end = new Offset(size.width, size.height * 0.8);
-    path.quadraticBezierTo(ctrl.dx, ctrl.dy, end.dx, end.dy);
+    path.quadraticBezierTo(ctrl.diameter, ctrl.dy, end.diameter, end.dy);
 
     path.lineTo(size.width, size.height * 0.8);
 
