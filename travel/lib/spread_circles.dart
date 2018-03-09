@@ -25,7 +25,7 @@ class SpreadCirclesState extends State<SpreadCircles>
 
     purpleCircleDiameter = new Tween<double>(begin: 0.0, end: 130.0).animate(
         new CurvedAnimation(parent: animationController,
-            curve: new Interval(0.0, 0.4, curve: Curves.bounceInOut)));
+            curve: new Interval(0.0, 0.6, curve: Curves.bounceInOut)));
 
     yellowCircleDiameter = new Tween<double>(begin: 0.0, end: 80.0).animate(
         new CurvedAnimation(parent: animationController,
@@ -59,6 +59,7 @@ class SpreadCirclesState extends State<SpreadCircles>
   @override
   Widget build(BuildContext context) {
     return new Container(
+      color: Colors.transparent,
       child: new Stack(
         children: <Widget>[
           new Align( // light green circle on the left border
@@ -71,7 +72,7 @@ class SpreadCirclesState extends State<SpreadCircles>
           ),
 
           new Align( // purple circle on the right border
-            alignment: new Alignment(1.0, 0.3),
+            alignment: new Alignment(1.0, 0.24),
             child: new Circle(
               color: Colors.purple.withOpacity(0.8),
               diameter: purpleCircleDiameter.value,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel/animated_background.dart';
 import 'package:travel/animated_locations_text.dart';
 import 'package:travel/animated_text.dart';
 import 'package:travel/spread_circles.dart';
@@ -57,6 +58,7 @@ class LandingPageState extends State<LandingPage>
     return new Scaffold(
       body: new Stack(
         children: <Widget>[
+          new AnimatedBackground(),
           _buildStackedCircles(),
           new SpreadCircles(),
           _buildButtomButtons(),
