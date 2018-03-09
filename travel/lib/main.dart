@@ -30,7 +30,7 @@ class SplashPageToLandingPageRoute<T> extends MaterialPageRoute<T> {
       : super(builder: builder, settings: settings);
 
   @override
-  Duration get transitionDuration => new Duration(milliseconds: 1000);
+  Duration get transitionDuration => new Duration(milliseconds: 1500);
 
   @override
   Widget buildTransitions(BuildContext context,
@@ -42,8 +42,6 @@ class SplashPageToLandingPageRoute<T> extends MaterialPageRoute<T> {
 
     final curve = new CurvedAnimation(
         parent: animation, curve: Curves.easeInOut);
-    // Fades between routes. (If you don't want any animation,
-    // just return child.)
     return new FadeTransition(opacity: curve, child: child);
   }
 }
