@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel/circles.dart';
 
 class SpreadCircles extends StatefulWidget {
 
@@ -9,13 +10,49 @@ class SpreadCircles extends StatefulWidget {
 class SpreadCirclesState extends State<SpreadCircles>
     with SingleTickerProviderStateMixin {
 
+  AnimationController animationController;
+  Animation<double> purpleCircleDiameter;
+  Animation<double> yellowCircleDiameter;
+  Animation<double> greenCircleDiameter;
+
   @override
   void initState() {
     super.initState();
+
+    animationController =
+    new AnimationController(
+        vsync: this, duration: new Duration(milliseconds: 800));
+
+    purpleCircleDiameter = new Tween<double>(begin: 0.0, end: 130.0).animate(
+        new CurvedAnimation(parent: animationController,
+            curve: new Interval(0.0, 0.4, curve: Curves.bounceInOut)));
+
+    yellowCircleDiameter = new Tween<double>(begin: 0.0, end: 80.0).animate(
+        new CurvedAnimation(parent: animationController,
+            curve: new Interval(0.3, 0.7, curve: Curves.bounceInOut)));
+
+    greenCircleDiameter = new Tween<double>(begin: 0.0, end: 60.0).animate(
+        new CurvedAnimation(parent: animationController,
+            curve: new Interval(0.6, 1.0, curve: Curves.easeIn)));
+
+    purpleCircleDiameter.addListener(() {
+      setState(() {});
+    });
+
+    greenCircleDiameter.addListener(() {
+      setState(() {});
+    });
+
+    yellowCircleDiameter.addListener(() {
+      setState(() {});
+    });
+
+    animationController.forward();
   }
 
   @override
   void dispose() {
+    animationController.dispose();
     super.dispose();
   }
 
@@ -24,46 +61,33 @@ class SpreadCirclesState extends State<SpreadCircles>
     return new Container(
       child: new Stack(
         children: <Widget>[
-          new Align(alignment: new Alignment(-1.0, 0.0),
-            child: new Container(
-              width: 20.0, height: 30.0, color: Colors.lightBlue,),)
+          new Align( // light green circle on the left border
+            alignment: new Alignment(-1.0, -0.05),
+            child: new Circle(
+              color: Colors.grey.withGreen(190).withOpacity(0.5),
+              diameter: greenCircleDiameter.value,
+              center: new Offset(10.0, 25.0),
+            ),
+          ),
+
+          new Align( // purple circle on the right border
+            alignment: new Alignment(1.0, 0.3),
+            child: new Circle(
+              color: Colors.purple.withOpacity(0.8),
+              diameter: purpleCircleDiameter.value,
+              center: new Offset(95.0, 75.0),
+            ),
+          ),
+
+          new Align( // yellow circle at the top
+            alignment: new Alignment(0.6, -0.85),
+            child: new Circle(
+                color: Colors.yellow.withOpacity(0.8),
+                diameter: yellowCircleDiameter.value
+            ),
+          ),
         ],
       ),
     );
   }
-}
-
-class SemiCircle extends StatelessWidget {
-
-  final Color color;
-  final double diameter;
-
-  SemiCircle(this.color, this.diameter);
-
-  @override
-  Widget build(BuildContext context) {
-    return new CustomPaint(
-      size: new Size(diameter, diameter),
-      painter: new SemiCirclePainter(color),
-    );
-  }
-
-}
-
-class SemiCirclePainter extends CustomPainter {
-
-  final Color color;
-
-  SemiCirclePainter(this.color);
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    canvas.drawCircle(
-        new Offset(size.width / 2, size.height / 2), size.width / 2,
-        new Paint()..color = this.color);
-  }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
-
 }
