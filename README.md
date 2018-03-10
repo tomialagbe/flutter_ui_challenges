@@ -24,7 +24,7 @@ Design made by **Shahin Srowar**
 ### [Travel App](https://github.com/tomialagbe/flutter_ui_challenges/tree/master/travel)
 Design made by **Daryl Ginn**
 
-[<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/travel/travel_app.gif" width="230" height="500">](https://dribbble.com/shots/4301490-Travel-App)
+[<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/travel/travel_app.gif" width="235" height="500">](https://dribbble.com/shots/4301490-Travel-App)
 
 # Advanced
 
