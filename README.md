@@ -12,19 +12,19 @@ Put your Flutter experience to test with these UI Challenges.
 
 
 
-# ~~Beginner~~ (Complete)
+# ~~Beginner~~ (Completed)
 
 ### [Profile App](https://github.com/tomialagbe/flutter_ui_challenges/tree/master/profile)
 Design made by **Shahin Srowar**
 
-[<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/profile.png" width="600" height="450">](https://dribbble.com/shots/4249249-Profile-App-Screen-Exploration)
+[<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/profile/profile_screen.png" width="240" height="450">](https://dribbble.com/shots/4249249-Profile-App-Screen-Exploration)
 
-# Intermediate
+# ~~Intermediate~~ (Completed)
 
 ### [Travel App](https://github.com/tomialagbe/flutter_ui_challenges/tree/master/travel)
 Design made by **Daryl Ginn**
 
-[<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/travel.gif" width="600" height="450">](https://dribbble.com/shots/4301490-Travel-App)
+[<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/travel/travel_app.gif" width="235" height="500">](https://dribbble.com/shots/4301490-Travel-App)
 
 # Advanced
 
