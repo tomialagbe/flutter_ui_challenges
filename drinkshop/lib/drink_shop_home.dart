@@ -1,7 +1,31 @@
+import 'dart:async';
+
 import 'package:drinkshop/colors.dart';
+import 'package:drinkshop/drink_selection_panel.dart';
+import 'package:drinkshop/header.dart';
+import 'package:drinkshop/models.dart';
 import 'package:flutter/material.dart';
 
-class DrinkShopHome extends StatelessWidget {
+class DrinkShopHome extends StatefulWidget {
+  @override
+  State createState() => new DrinkShopHomeState();
+}
+
+class DrinkShopHomeState extends State<DrinkShopHome> {
+  StreamController<DrinkType> drinkTypeStream;
+
+  @override
+  void initState() {
+    super.initState();
+    drinkTypeStream = new StreamController<DrinkType>();
+  }
+
+  @override
+  void dispose() {
+    drinkTypeStream.close();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -9,31 +33,12 @@ class DrinkShopHome extends StatelessWidget {
         color: DrinkShopColors.backgroundColor,
         child: new Stack(
           children: <Widget>[
-            _buildTopPanel(),
+            new DrinkSelectionPanel(drinkTypeStream),
+            new DrinkShopHeader(drinkTypeStream),
             _buildOrderItems(),
           ],
         ),
       ),
-    );
-  }
-
-  Widget _buildTopPanel() {
-    return new Stack(
-      children: <Widget>[
-        new ClipOval(
-          clipper: new CustomClipOval(),
-          child: new Container(
-            decoration: new BoxDecoration(
-              color: DrinkShopColors.backgroundAccentColor,
-            ),
-          ),
-        ),
-        new Row(
-          children: <Widget>[
-
-          ],
-        ),
-      ],
     );
   }
 
@@ -48,15 +53,4 @@ class DrinkShopHome extends StatelessWidget {
       ),
     );
   }
-}
-
-class CustomClipOval extends CustomClipper<Rect> {
-  @override
-  Rect getClip(Size size) {
-    return new Rect.fromCircle(
-        center: new Offset(size.width / 2, 50.0), radius: size.width);
-  }
-
-  @override
-  bool shouldReclip(CustomClipper<Rect> oldClipper) => true;
 }
