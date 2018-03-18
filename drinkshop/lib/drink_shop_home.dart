@@ -28,12 +28,15 @@ class DrinkShopHomeState extends State<DrinkShopHome> {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final panelSize = new Size(screenWidth, screenHeight * (3 / 4));
     return new Scaffold(
       body: new Container(
         color: DrinkShopColors.backgroundColor,
         child: new Stack(
           children: <Widget>[
-            new DrinkSelectionPanel(drinkTypeStream),
+            new DrinkSelectionPanel(drinkTypeStream, panelSize),
             new DrinkShopHeader(drinkTypeStream),
             _buildOrderItems(),
           ],

@@ -5,7 +5,11 @@ class Drink {
   double price;
 }
 
-Map<DrinkType, List<Drink>> drinks = <DrinkType, List<Drink>>{
+List<Drink> getDrinks(DrinkType type) {
+  return _drinks[type];
+}
+
+Map<DrinkType, List<Drink>> _drinks = <DrinkType, List<Drink>>{
   DrinkType.frappe: <Drink>[
     new Drink()
       ..drinkType = DrinkType.frappe
