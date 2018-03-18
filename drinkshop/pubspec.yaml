@@ -30,6 +30,11 @@ flutter:
     - assets/images/glass.png
     - assets/images/frappe_with_straw.png
     - assets/images/glass_with_straw.png
+
+  fonts:
+    - family: ionicons
+      fonts:
+        - asset: assets/fonts/ionicons.ttf
     
   # To add assets to your application, add an assets section, like this:
   # assets:
