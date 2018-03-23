@@ -108,9 +108,11 @@ class DrinkSwitchMenuState extends State<DrinkSwitchMenu>
   }
 
   void swapDrinks() async {
-    widget.drinkTypeStream
-        .add(active == frappeKey ? DrinkType.frappe : DrinkType.glass);
     await controller.forward();
+
+    widget.drinkTypeStream
+        .add(active == frappeKey ? DrinkType.glass : DrinkType.frappe);
+
     await controller.reverse();
 
     setState(() {

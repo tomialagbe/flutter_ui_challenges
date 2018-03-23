@@ -6,7 +6,6 @@ class DrinkShopApp extends StatelessWidget {
   DrinkShopApp() {
     SystemChrome.setPreferredOrientations(
         <DeviceOrientation>[DeviceOrientation.portraitUp]);
-    SystemChrome.setEnabledSystemUIOverlays([]);
   }
 
   @override
