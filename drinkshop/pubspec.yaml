@@ -35,6 +35,9 @@ flutter:
     - family: ionicons
       fonts:
         - asset: assets/fonts/ionicons.ttf
+    - family: fontello
+      fonts:
+        - asset: assets/fonts/fontello.ttf
     
   # To add assets to your application, add an assets section, like this:
   # assets:
