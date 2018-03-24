@@ -3,6 +3,10 @@ enum DrinkType { frappe, glass }
 class Drink {
   DrinkType drinkType;
   double price;
+
+  String get asset => drinkType == DrinkType.glass
+      ? "assets/images/glass_with_straw.png"
+      : "assets/images/frappe_with_straw.png";
 }
 
 List<Drink> getDrinks(DrinkType type) {
