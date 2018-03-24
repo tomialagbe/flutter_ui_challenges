@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 
 class DrinkCarousel extends StatefulWidget {
-  final Matrix4 drinkSwitchTransform;
   final double opacity;
   final double drinkSwitchYTranslation;
   final double carouselExpandYTranslation;
@@ -15,7 +14,6 @@ class DrinkCarousel extends StatefulWidget {
   DrinkCarousel({
     Key key,
     this.drinks,
-//    this.drinkSwitchTransform,
     this.drinkSwitchYTranslation,
     this.carouselExpandYTranslation,
     this.opacity,
