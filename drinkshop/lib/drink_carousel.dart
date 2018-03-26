@@ -1,6 +1,7 @@
-import 'dart:math' as math;
 import 'dart:math';
-import 'package:drinkshop/colors.dart';
+
+import 'package:drinkshop/drink_carousel_card.dart';
+import 'package:drinkshop/drink_carousel_item.dart';
 import 'package:drinkshop/models.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -50,20 +51,16 @@ class _DrinkCarouselState extends State<DrinkCarousel> {
       0.0,
     );
 
-    final children = _buildItems();
     return new Stack(
+      alignment: Alignment.center,
       children: <Widget>[
         new Transform(
-//          transform: widget.drinkSwitchTransform,
           transform: switchTransform,
           child: new Opacity(
             opacity: widget.opacity,
-            child: new Center(
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: children,
-              ),
+            child: new DrinkCarouselScroller(
+              drinks: widget.drinks,
+              size: new Size(MediaQuery.of(context).size.width, 400.0),
             ),
           ),
         ),
@@ -77,185 +74,155 @@ class _DrinkCarouselState extends State<DrinkCarousel> {
       ],
     );
   }
-
-  List<Widget> _buildItems() {
-    final items = <Widget>[];
-    final int mid = (widget.drinks.length / 2).round();
-    for (int i = 0; i < widget.drinks.length; ++i) {
-      if (i >= mid - 2 && i <= mid + 2) {
-        var item;
-        if (i == mid) {
-          item = new DrinkCarouselItem(
-            size: new Size(110.0, 170.0),
-            drink: widget.drinks[i],
-            active: true,
-          );
-        } else if ((mid - i).abs() == 1) {
-          item = new DrinkCarouselItem(
-            size: new Size(55.0, 80.0),
-            drink: widget.drinks[i],
-            active: false,
-          );
-        } else {
-          item = new DrinkCarouselItem(
-            size: new Size(45.0, 50.0),
-            drink: widget.drinks[i],
-            active: false,
-          );
-        }
-        items.add(item);
-      }
-    }
-    return items;
-  }
 }
 
-class DrinkCarouselItem extends StatefulWidget {
-  DrinkCarouselItem({this.size, this.drink, this.active: false});
-
+class DrinkCarouselScroller extends StatefulWidget {
+  final List<Drink> drinks;
   final Size size;
+  final int initialIndex;
 
-  final Drink drink;
-
-  final bool active;
+  DrinkCarouselScroller({
+    this.drinks,
+    this.size,
+    this.initialIndex: 3,
+  })
+      : assert(initialIndex < drinks.length);
 
   @override
-  State createState() => new DrinkCarouselItemState();
+  _DrinkCarouselScrollerState createState() =>
+      new _DrinkCarouselScrollerState();
 }
 
-class DrinkCarouselItemState extends State<DrinkCarouselItem>
-    with SingleTickerProviderStateMixin {
-  AnimationController onTapAnimationController;
-  Animation<double> tiltAnimation;
-  Animation<double> translateAnimation;
+class _DrinkCarouselScrollerState extends State<DrinkCarouselScroller> {
+  int currentActiveIndex;
+  final activeItemSize = const Size(140.0, 200.0);
 
   @override
   void initState() {
     super.initState();
-
-    onTapAnimationController = new AnimationController(
-        vsync: this, duration: new Duration(milliseconds: 300));
-    tiltAnimation = new Tween<double>(begin: 0.0, end: 20.0).animate(
-        new CurvedAnimation(
-            parent: onTapAnimationController,
-            curve: new Interval(0.0, 1.0, curve: Curves.easeInOut)));
-    translateAnimation = new Tween<double>(begin: 0.0, end: 40.0).animate(
-        new CurvedAnimation(
-            parent: onTapAnimationController,
-            curve: new Interval(0.0, 1.0, curve: Curves.easeInOut)));
-
-    tiltAnimation.addListener(() {
-      setState(() {});
-    });
-    translateAnimation.addListener(() {
-      setState(() {});
-    });
+    currentActiveIndex = widget.initialIndex;
   }
 
   @override
   Widget build(BuildContext context) {
-    final transform = new Matrix4.translationValues(
-        (-1 * translateAnimation.value) + 10.0,
-        -1 * translateAnimation.value,
-        0.0)
-      ..rotateZ(-1 * tiltAnimation.value * (math.PI / 180));
+    final children = _buildChildren();
     return new GestureDetector(
-      onTap: _tapped,
-      child: new Transform(
-        alignment: Alignment.center,
-        transform: transform,
-        child: new SizedBox(
-          width: widget.size.width,
-          height: widget.size.height,
-          child: new Image.asset(
-            widget.drink.asset,
-            fit: BoxFit.cover,
-          ),
+      child: new Flow(
+        delegate: new DrinkCarouselScrollerDelegate(
+          items: children,
+          scrollerSize: widget.size,
+          activeItemSize: activeItemSize,
+          activeIndex: currentActiveIndex,
         ),
+        children: children,
       ),
     );
   }
 
-  void _tapped() async {
-    if (widget.active) {
-      await onTapAnimationController.forward();
-      onTapAnimationController.reverse();
+  List<DrinkCarouselItem> _buildChildren() {
+    final children = <DrinkCarouselItem>[];
+    for (var i = 0; i < widget.drinks.length; ++i) {
+      final child = new DrinkCarouselItem(
+        size: activeItemSize,
+        drink: widget.drinks[i],
+        onDrinkSelected: null,
+        active: i == currentActiveIndex,
+      );
+      children.add(child);
+    }
+    return children;
+  }
+}
+
+class DrinkCarouselScrollerDelegate extends FlowDelegate {
+  static const int maxDrinksPerPage = 5; // show only 5 drinks on the page
+  static const activeScale = 1.0;
+  static const nextToActiveScale = 0.6;
+  static const outerScale = 0.4;
+
+  final List<DrinkCarouselItem> items;
+  final Size scrollerSize;
+  final Size activeItemSize;
+  final int activeIndex;
+
+  DrinkCarouselScrollerDelegate({
+    this.items,
+    this.scrollerSize,
+    this.activeItemSize,
+    this.activeIndex,
+  });
+
+  @override
+  Size getSize(BoxConstraints constraints) => scrollerSize;
+
+  @override
+  void paintChildren(FlowPaintingContext context) {
+    var transform;
+    final activeItemXPosition =
+        scrollerSize.width / 2 - (activeItemSize.width / 2);
+    var activeIndexTransform =
+        new Matrix4.translationValues(activeItemXPosition, 80.0, 0.0);
+
+    for (int i = 0; i < context.childCount; i++) {
+      int diff = (i - activeIndex).abs();
+      switch (diff) {
+        case 0:
+          context.paintChild(
+            i,
+            transform: activeIndexTransform,
+            opacity: 1.0,
+          );
+          break;
+        case 1:
+          {
+            var xtransform = i < activeIndex
+                ? -activeItemSize.width * 0.6
+                : activeItemSize.width;
+            transform = new Matrix4.copy(activeIndexTransform)
+              ..translate(xtransform, (activeItemSize.height * 0.6) / 2, 0.0)
+              ..scale(0.6);
+            context.paintChild(
+              i,
+              transform: transform,
+              opacity: 0.8,
+            );
+          }
+          break;
+        case 2:
+        default:
+          {
+            var xtransform;
+            if (transform == null) {
+              xtransform = i < activeIndex
+                  ? -activeItemSize.width * 0.6
+                  : activeItemSize.width;
+              transform = new Matrix4.copy(activeIndexTransform)
+                ..translate(xtransform, (activeItemSize.height * 0.6) / 2, 0.0)
+                ..scale(0.6);
+            }
+            xtransform = i < activeIndex
+                ? ((-activeItemSize.width * 0.6) * 0.8)
+                : activeItemSize.width;
+            transform = new Matrix4.copy(transform)
+              ..translate(
+                xtransform,
+                ((activeItemSize.height * 0.6) * 0.8) / 2,
+                0.0,
+              )
+              ..scale(0.8 * 0.6);
+            context.paintChild(
+              i,
+              transform: transform,
+              opacity: 0.6,
+            );
+          }
+          break;
+      }
     }
   }
-}
-
-class DrinkCarouselCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return new CustomPaint(
-      size: new Size(110.0, 80.0),
-      painter: new DrinkCarouselCardPainter(),
-    );
-  }
-}
-
-class DrinkCarouselCardPainter extends CustomPainter {
-  final Paint cardPaint;
-  final Paint cardLinePaint;
-  final Paint cardBackPaint;
-
-  DrinkCarouselCardPainter()
-      : cardPaint = new Paint(),
-        cardBackPaint = new Paint(),
-        cardLinePaint = new Paint() {
-    cardPaint.color = DrinkShopColors.carouselCardColor;
-    cardPaint.style = PaintingStyle.fill;
-    cardLinePaint.color = DrinkShopColors.carouselCardLineColor;
-    cardLinePaint.style = PaintingStyle.fill;
-    cardBackPaint.color = DrinkShopColors.carouselCardBackColor;
-    cardBackPaint.style = PaintingStyle.fill;
-  }
 
   @override
-  void paint(Canvas canvas, Size size) {
-    Path cardBackPath = new Path();
-    cardBackPath.moveTo(0.8 * size.width, 0.0);
-    cardBackPath.lineTo(size.width, 0.6 * size.height);
-    cardBackPath.lineTo(0.2 * size.width, 0.6 * size.height);
-    cardBackPath.close();
-    canvas.drawPath(cardBackPath, cardBackPaint);
-
-    Path cardPath = new Path();
-    cardPath.moveTo(0.2 * size.width, 0.0);
-    cardPath.lineTo(0.0, 0.7 * size.height);
-    cardPath.lineTo(0.6 * size.width, size.height);
-    cardPath.lineTo(0.8 * size.width, 0.0);
-    cardPath.close();
-    canvas.drawPath(cardPath, cardPaint);
-
-    canvas.rotate(8 * (PI / 180));
-    canvas.save();
-
-    final horizontalPadding = 5.0;
-    final verticalPadding = 10.0;
-    final lineHeight = 20.0;
-    var rrect = new RRect.fromLTRBR(
-      0.2 * size.width + horizontalPadding,
-      verticalPadding,
-      0.7 * size.width - horizontalPadding,
-      lineHeight,
-      new Radius.circular(5.0),
-    );
-    canvas.drawRRect(rrect, cardLinePaint);
-
-    canvas.rotate(4 * (PI / 180));
-
-    rrect = new RRect.fromLTRBR(
-      0.2 * size.width + horizontalPadding,
-      (verticalPadding) + lineHeight,
-      0.7 * size.width - horizontalPadding,
-      (2 * verticalPadding) + (lineHeight),
-      new Radius.circular(5.0),
-    );
-    canvas.drawRRect(rrect, cardLinePaint);
-    canvas.restore();
+  bool shouldRepaint(DrinkCarouselScrollerDelegate oldDelegate) {
+    return true;
   }
-
-  @override
-  bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
