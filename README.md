@@ -33,6 +33,12 @@ Design made by **Yaroslav Zubko**
 
 [<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/drinkshop.gif" width="600" height="450">](https://dribbble.com/shots/3843453-Drink-Shop)
 
+### [Book Reader]
+Design made by **Noam Liss**
+
+[<img src="https://cdn.dribbble.com/users/128918/screenshots/3911197/noam-dribbble-v8.gif" width="600" height="450">]
+(https://dribbble.com/shots/3911197-DesignBetter-co-app-concept-in-InVision-Studio)
+
 # Impossible
 
 ** Insert impossible challenge here **
