@@ -12,19 +12,25 @@ Put your Flutter experience to test with these UI Challenges.
 
 
 
-# ~~Beginner~~ (Completed)
+# Beginner
 
-### [Profile App](https://github.com/tomialagbe/flutter_ui_challenges/tree/master/profile)
+### [Profile App](https://github.com/tomialagbe/flutter_ui_challenges/tree/master/profile) (Completed)
 Design made by **Shahin Srowar**
 
 [<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/profile/profile_screen.png" width="240" height="450">](https://dribbble.com/shots/4249249-Profile-App-Screen-Exploration)
 
-# ~~Intermediate~~ (Completed)
+# Intermediate 
 
-### [Travel App](https://github.com/tomialagbe/flutter_ui_challenges/tree/master/travel)
+### [Travel App](https://github.com/tomialagbe/flutter_ui_challenges/tree/master/travel) (Completed)
 Design made by **Daryl Ginn**
 
 [<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/travel/travel_app.gif" width="235" height="500">](https://dribbble.com/shots/4301490-Travel-App)
+
+
+### [Book Reader](https://dribbble.com/shots/3911197-DesignBetter-co-app-concept-in-InVision-Studio)
+Design made by **Noam Liss**
+
+[<img src="https://cdn.dribbble.com/users/128918/screenshots/3911197/noam-dribbble-v8.gif" width="600" height="450">](https://dribbble.com/shots/3911197-DesignBetter-co-app-concept-in-InVision-Studio)
 
 # Advanced
 
@@ -32,12 +38,6 @@ Design made by **Daryl Ginn**
 Design made by **Yaroslav Zubko**
 
 [<img src="https://github.com/tomialagbe/flutter_ui_challenges/blob/master/drinkshop.gif" width="600" height="450">](https://dribbble.com/shots/3843453-Drink-Shop)
-
-### [Book Reader]
-Design made by **Noam Liss**
-
-[<img src="https://cdn.dribbble.com/users/128918/screenshots/3911197/noam-dribbble-v8.gif" width="600" height="450">]
-(https://dribbble.com/shots/3911197-DesignBetter-co-app-concept-in-InVision-Studio)
 
 # Impossible
 
