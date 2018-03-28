@@ -36,7 +36,7 @@ Design made by **Yaroslav Zubko**
 ### [Book Reader]
 Design made by **Noam Liss**
 
-[<img src="https://cdn-images-1.medium.com/max/800/1*QGZsz-PXya_f4wiwHG8dTA.gif">]
+[<img src="https://cdn.dribbble.com/users/128918/screenshots/3911197/noam-dribbble-v8.gif">]
 (https://dribbble.com/shots/3911197-DesignBetter-co-app-concept-in-InVision-Studio)
 
 # Impossible
