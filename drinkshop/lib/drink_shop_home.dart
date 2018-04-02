@@ -34,6 +34,8 @@ class DrinkShopHomeState extends State<DrinkShopHome> {
     return new Scaffold(
       body: new Container(
         color: DrinkShopColors.backgroundColor,
+        padding: EdgeInsets.zero,
+        margin: EdgeInsets.zero,
         child: new Stack(
           children: <Widget>[
             new DrinkSelectionPanel(drinkTypeStream, panelSize),

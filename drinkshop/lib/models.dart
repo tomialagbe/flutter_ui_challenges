@@ -4,6 +4,10 @@ class Drink {
   DrinkType drinkType;
   String name;
   double price;
+
+  String get asset => drinkType == DrinkType.glass
+      ? "assets/images/glass_with_straw.png"
+      : "assets/images/frappe_with_straw.png";
 }
 
 List<Drink> getDrinks(DrinkType type) {
