@@ -1,4 +1,3 @@
-import 'package:bookreader/book_row.dart';
 import 'package:flutter/material.dart';
 
 class BookShelf extends StatelessWidget {
@@ -46,7 +45,6 @@ class BookShelf extends StatelessWidget {
                         new Tab(text: 'WORKSHOPS'),
                       ],
                     ),
-                    new BookRow(),
                   ],
                 ),
               ),
