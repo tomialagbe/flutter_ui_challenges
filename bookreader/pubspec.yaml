@@ -32,6 +32,10 @@ flutter:
 
   assets:
     - assets/images/owl.png
+    - assets/images/book1.gif
+    - assets/images/book2.gif
+    - assets/images/book3.gif
+    - assets/images/book4.gif
 
   fonts:
     - family: Fontello
