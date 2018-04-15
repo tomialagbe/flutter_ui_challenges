@@ -26,10 +26,27 @@ class BookShelf extends StatelessWidget {
             ),
             new Container(
               height: 450.0,
-              width: double.INFINITY,
+              width: double.infinity,
               decoration: new BoxDecoration(
                 borderRadius: new BorderRadius.only(topLeft: const Radius.circular(30.0), topRight: const Radius.circular(30.0)),
                 color: Colors.white,
+              ),
+              child: new DefaultTabController(
+                length: 3,
+                child: new Column(
+                  children: <Widget>[
+                    new TabBar(
+                      indicatorWeight: 3.0,
+                      isScrollable: true,
+                      labelColor: Colors.black87,
+                      tabs: <Widget>[
+                        new Tab(text: 'BOOKS'),
+                        new Tab(text: 'PODCAST'),
+                        new Tab(text: 'WORKSHOPS'),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

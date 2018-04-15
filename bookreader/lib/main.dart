@@ -11,6 +11,7 @@ class BookReaderApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Book Reader',
       home: new BookReaderHomePage(),
+      theme: new ThemeData(primarySwatch: Colors.indigo),
     );
   }
 }
@@ -46,11 +47,6 @@ class _BookReaderHomePageState extends State<BookReaderHomePage> with SingleTick
           color: Colors.blue[900],
           child: new Stack(
             children: <Widget>[
-              new Align(
-                alignment: new FractionalOffset(0.95, 0.06),
-                child:
-                new Icon(BookReaderIcons.menu, color: Colors.white, size: 17.0),
-              ),
               new Center(
                 child: new Column(
                   mainAxisAlignment: MainAxisAlignment.center,
