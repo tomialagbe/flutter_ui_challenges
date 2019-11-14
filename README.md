@@ -1,4 +1,4 @@
-# FLUTTER UI CHALLENGE <img src="https://flutter.io/images/flutter-mark-square-100.png" alt="Flutter" width="30" height="30" />
+# FLUTTER UI CHALLENGE <img src="flutter-logo.png" alt="Flutter" width="30" height="30" />
 
 Put your Flutter experience to test with these UI Challenges. 
 
